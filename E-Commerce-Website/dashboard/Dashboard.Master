@@ -62,7 +62,7 @@
                                 </a>
                                 <ul class="collapse" id="hrSubmenu">
                                     <li>
-                                        <asp:HyperLink ID="hlEmployees" runat="server" NavigateUrl="~/Employees.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
+                                        <asp:HyperLink ID="hlEmployees" runat="server" NavigateUrl="~/dashboard/sections/employees/Employees.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
                                             Employees
                                         </asp:HyperLink>
                                     </li>

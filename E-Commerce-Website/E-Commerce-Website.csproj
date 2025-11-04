@@ -78,6 +78,8 @@
     <Content Include="assets\icons\product.svg" />
     <Content Include="assets\icons\store-window.svg" />
     <Content Include="assets\icons\settings.svg" />
+    <Content Include="dashboard\sections\employees\AddEmployees.aspx" />
+    <Content Include="dashboard\sections\employees\Employees.aspx" />
     <Content Include="dashboard\sections\LandingPage.aspx" />
     <Content Include="dashboard\styles\style.css" />
     <Content Include="lib\bootstrap\dist\css\bootstrap-grid.css" />
@@ -167,6 +169,20 @@
     </Compile>
     <Compile Include="dashboard\Dashboard.Master.designer.cs">
       <DependentUpon>Dashboard.Master</DependentUpon>
+    </Compile>
+    <Compile Include="dashboard\sections\employees\AddEmployees.aspx.cs">
+      <DependentUpon>AddEmployees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard\sections\employees\AddEmployees.aspx.designer.cs">
+      <DependentUpon>AddEmployees.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dashboard\sections\employees\Employees.aspx.cs">
+      <DependentUpon>Employees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard\sections\employees\Employees.aspx.designer.cs">
+      <DependentUpon>Employees.aspx</DependentUpon>
     </Compile>
     <Compile Include="dashboard\sections\LandingPage.aspx.cs">
       <DependentUpon>LandingPage.aspx</DependentUpon>
@@ -338,7 +354,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="storage\photos\employees\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
