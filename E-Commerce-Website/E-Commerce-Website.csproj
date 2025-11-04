@@ -67,6 +67,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\icons\person.svg" />
+    <Content Include="assets\icons\info.svg" />
+    <Content Include="assets\icons\shield.svg" />
+    <Content Include="assets\icons\logout.svg" />
+    <Content Include="assets\icons\buildings.svg" />
+    <Content Include="assets\icons\store.svg" />
+    <Content Include="assets\icons\people.svg" />
+    <Content Include="assets\icons\dashboard.svg" />
+    <Content Include="assets\icons\product.svg" />
+    <Content Include="assets\icons\store-window.svg" />
+    <Content Include="assets\icons\settings.svg" />
+    <Content Include="dashboard\sections\LandingPage.aspx" />
+    <Content Include="dashboard\styles\style.css" />
     <Content Include="lib\bootstrap\dist\css\bootstrap-grid.css" />
     <Content Include="lib\bootstrap\dist\css\bootstrap-grid.min.css" />
     <Content Include="lib\bootstrap\dist\css\bootstrap-grid.rtl.css" />
@@ -148,6 +161,20 @@
     <Content Include="auth\Login.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dashboard\Dashboard.Master.cs">
+      <DependentUpon>Dashboard.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard\Dashboard.Master.designer.cs">
+      <DependentUpon>Dashboard.Master</DependentUpon>
+    </Compile>
+    <Compile Include="dashboard\sections\LandingPage.aspx.cs">
+      <DependentUpon>LandingPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard\sections\LandingPage.aspx.designer.cs">
+      <DependentUpon>LandingPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="auth\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -302,6 +329,7 @@
     <Content Include="lib\bootstrap\scss\_utilities.scss" />
     <Content Include="lib\bootstrap\scss\_variables-dark.scss" />
     <Content Include="lib\bootstrap\scss\_variables.scss" />
+    <Content Include="dashboard\Dashboard.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

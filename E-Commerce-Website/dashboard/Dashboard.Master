@@ -1,0 +1,203 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.master.cs" Inherits="E_Commerce_Website.dashboard.Dashboard" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Store Management System - Dashboard</title>
+
+    <link href="~/dashboard/styles/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server" style="width: 100%; height: 100%">
+        <div class="app-container">
+
+            <aside class="sidebar bg-white border-end p-4 d-flex flex-column">
+                <div class="sidebar-header mb-2">
+                    <div class="logo d-flex align-items-center gap-2 fw-semibold text-dark">
+                        <span class="logo-icon d-flex align-items-center justify-content-center rounded bg-primary-light text-primary" style="width: 32px; height: 32px;">
+                            <img src="/assets/icons/store.svg" alt="store" />
+                        </span>
+                        <span>Management System</span>
+                    </div>
+                </div>
+
+                <div class="user-profile d-flex align-items-center gap-2 mb-4">
+                    <div class="user-profile-avatar rounded-circle border border-primary bg-primary-light text-primary d-flex align-items-center justify-content-center fw-semibold" style="width: 40px; height: 40px;">
+                        <img src="https://placehold.co/600x600/png/blue" alt="profile-picture" class="img-fluid rounded-circle" />
+                    </div>
+                    <div class="user-profile-info">
+                        <span class="name fw-semibold text-dark">
+                            <asp:Label ID="lblUserName" runat="server" />
+                        </span>
+                        <span class="role text-muted small d-block">
+                            <asp:Label ID="lblUserRole" runat="server" />
+                        </span>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav flex-grow-1">
+                    <ul class="list-unstyled">
+                        <li>
+                            <asp:HyperLink ID="hlDashboard" runat="server" NavigateUrl="~/dashboard/sections/LandingPage.aspx" CssClass="nav-link d-flex align-items-center gap-2">
+                                <img src="/assets/icons/dashboard.svg" alt="dashboard" />
+                                <span>Dashboard</span>
+                            </asp:HyperLink>
+                        </li>
+                    </ul>
+
+                    <div class="nav-section">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#hrSubmenu" runat="server" data-bs-toggle="collapse" class="nav-link d-flex align-items-center gap-2" aria-expanded="false" aria-controls="hrSubmenu">
+                                    <img src="/assets/icons/people.svg" alt="people" />
+                                    <span>HR Management</span>
+                                </a>
+                                <ul class="collapse" id="hrSubmenu">
+                                    <li>
+                                        <asp:HyperLink ID="hlEmployees" runat="server" NavigateUrl="~/Employees.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
+                                            Employees
+                                        </asp:HyperLink>
+                                    </li>
+                                    <li>
+                                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Employees.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
+                                            Departments
+                                        </asp:HyperLink>
+                                    </li>
+                                    <li>
+                                        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Employees.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
+                                            Job Titles
+                                        </asp:HyperLink>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav-section ">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#branchesSubmenu" runat="server" data-bs-toggle="collapse" class="nav-link d-flex align-items-center gap-2" aria-expanded="false" aria-controls="branchesSubmenu">
+                                    <img src="/assets/icons/buildings.svg" alt="people" />
+                                    <span>branches</span>
+                                </a>
+                                <ul class="collapse" id="branchesSubmenu">
+                                    <li>
+                                        <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Employees.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
+                                            All Branches
+                                        </asp:HyperLink>
+                                    </li>
+                                    <li>
+                                        <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Employees.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
+                                            Add Branch
+                                        </asp:HyperLink>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav-section ">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#whSubmenu" runat="server" data-bs-toggle="collapse" class="nav-link d-flex align-items-center gap-2" aria-controls="whSubmenu" aria-expanded="false">
+                                    <img src="/assets/icons/store-window.svg" alt="people" />
+                                    <span>Warehouses</span>
+                                </a>
+                                <ul class="collapse" id="whSubmenu">
+                                    <li>
+                                        <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Employees.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
+                                            All Warehouses
+                                        </asp:HyperLink>
+                                    </li>
+                                    <li>
+                                        <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Employees.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
+                                            Add Warehouse
+                                        </asp:HyperLink>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav-section ">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#prSubmenu" runat="server" data-bs-toggle="collapse" class="nav-link d-flex align-items-center gap-2" aria-controls="prSubmenu" aria-expanded="false">
+                                    <img src="/assets/icons/product.svg" alt="product" />
+                                    <span>Products</span>
+                                </a>
+                                <ul class="collapse" id="prSubmenu">
+                                    <li>
+                                        <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/Employees.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
+                                            All Products
+                                        </asp:HyperLink>
+                                    </li>
+                                    <li>
+                                        <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/Employees.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
+                                            Add Product
+                                        </asp:HyperLink>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section ">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#" runat="server" class="nav-link d-flex align-items-center gap-2">
+                                    <img src="/assets/icons/settings.svg" alt="settings" />
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav-section ">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#" runat="server" class="nav-link d-flex align-items-center gap-2">
+                                    <img src="/assets/icons/shield.svg" alt="settings" />
+                                    <span>Roles & Permissions</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav-section ">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#" runat="server" class="nav-link d-flex align-items-center gap-2">
+                                    <img src="/assets/icons/info.svg" alt="info" />
+                                    <span>About</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Additional sections follow same pattern -->
+                </nav>
+
+                <div class="sidebar-footer border-top pt-3">
+                    <asp:LinkButton ID="lnkLogout" runat="server" CssClass="nav-link d-flex align-items-center gap-2">
+                        <img src="/assets/icons/logout.svg" alt="logout" />
+                        <span>Logout</span>
+                    </asp:LinkButton>
+                </div>
+            </aside>
+
+
+            <main class="main-content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </main>
+
+        </div>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+</body>
+</html>
