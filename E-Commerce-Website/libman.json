@@ -1,0 +1,11 @@
+{
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "provider": "unpkg",
+      "library": "bootstrap@5.3.8",
+      "destination": "lib/bootstrap/"
+    }
+  ],
+  "version": "3.0"
+}

@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+#bootstrap
+/E-Commerce-Website/E-Commerce-Website.csproj
+/E-Commerce-Website/lib/bootstrap
