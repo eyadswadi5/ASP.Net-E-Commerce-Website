@@ -19,6 +19,9 @@ namespace E_Commerce_Website
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            btnLogin.Enabled = false;
+            btnLogin.Text = "Signing in ...";
+
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
 
@@ -72,9 +75,9 @@ namespace E_Commerce_Website
                         Session["Gender"] = reader["gender"].ToString();
                         Session["Photo_url"] = reader["photo_url"].ToString();
 
-                        FormsAuthentication.SetAuthCookie(username, false);
-                        
-                        lblMessage.Text = "Welcome " + Session["FirstName"] + ", Login Success as " + Session["Role"];
+                        FormsAuthentication.RedirectFromLoginPage(username, false);
+
+                        Response.Redirect("~/dashboard/sections/LandingPage.aspx");
                     }
                 }
                 else
@@ -82,6 +85,9 @@ namespace E_Commerce_Website
                     lblMessage.Text = "Invalid username or password.";
                 }
             }
+
+            btnLogin.Enabled = true;
+            btnLogin.Text = "Sign in";
         }
     }
 }
