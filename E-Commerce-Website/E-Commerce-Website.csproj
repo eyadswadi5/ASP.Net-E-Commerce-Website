@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\icons\location.svg" />
     <Content Include="assets\icons\person.svg" />
     <Content Include="assets\icons\info.svg" />
     <Content Include="assets\icons\shield.svg" />
@@ -78,9 +79,13 @@
     <Content Include="assets\icons\product.svg" />
     <Content Include="assets\icons\store-window.svg" />
     <Content Include="assets\icons\settings.svg" />
+    <Content Include="dashboard\sections\branches\AddBranches.aspx" />
+    <Content Include="dashboard\sections\branches\Branches.aspx" />
     <Content Include="dashboard\sections\employees\AddEmployees.aspx" />
     <Content Include="dashboard\sections\employees\Employees.aspx" />
     <Content Include="dashboard\sections\LandingPage.aspx" />
+    <Content Include="dashboard\sections\warehouses\AddWarehouses.aspx" />
+    <Content Include="dashboard\sections\warehouses\Warehouses.aspx" />
     <Content Include="dashboard\styles\style.css" />
     <Content Include="lib\bootstrap\dist\css\bootstrap-grid.css" />
     <Content Include="lib\bootstrap\dist\css\bootstrap-grid.min.css" />
@@ -170,6 +175,20 @@
     <Compile Include="dashboard\Dashboard.Master.designer.cs">
       <DependentUpon>Dashboard.Master</DependentUpon>
     </Compile>
+    <Compile Include="dashboard\sections\branches\AddBranches.aspx.cs">
+      <DependentUpon>AddBranches.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard\sections\branches\AddBranches.aspx.designer.cs">
+      <DependentUpon>AddBranches.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dashboard\sections\branches\Branches.aspx.cs">
+      <DependentUpon>Branches.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard\sections\branches\Branches.aspx.designer.cs">
+      <DependentUpon>Branches.aspx</DependentUpon>
+    </Compile>
     <Compile Include="dashboard\sections\employees\AddEmployees.aspx.cs">
       <DependentUpon>AddEmployees.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -190,6 +209,20 @@
     </Compile>
     <Compile Include="dashboard\sections\LandingPage.aspx.designer.cs">
       <DependentUpon>LandingPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dashboard\sections\warehouses\AddWarehouses.aspx.cs">
+      <DependentUpon>AddWarehouses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard\sections\warehouses\AddWarehouses.aspx.designer.cs">
+      <DependentUpon>AddWarehouses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dashboard\sections\warehouses\Warehouses.aspx.cs">
+      <DependentUpon>Warehouses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard\sections\warehouses\Warehouses.aspx.designer.cs">
+      <DependentUpon>Warehouses.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="auth\Login.aspx.cs">

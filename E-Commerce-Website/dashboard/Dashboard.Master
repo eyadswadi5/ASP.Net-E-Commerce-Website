@@ -89,12 +89,12 @@
                                 </a>
                                 <ul class="collapse" id="branchesSubmenu">
                                     <li>
-                                        <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Employees.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
+                                        <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/dashboard/sections/branches/Branches.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
                                             All Branches
                                         </asp:HyperLink>
                                     </li>
                                     <li>
-                                        <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Employees.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
+                                        <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/dashboard/sections/branches/AddBranches.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
                                             Add Branch
                                         </asp:HyperLink>
                                     </li>
@@ -111,12 +111,12 @@
                                 </a>
                                 <ul class="collapse" id="whSubmenu">
                                     <li>
-                                        <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Employees.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
+                                        <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/dashboard/sections/warehouses/Warehouses.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
                                             All Warehouses
                                         </asp:HyperLink>
                                     </li>
                                     <li>
-                                        <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Employees.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
+                                        <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/dashboard/sections/warehouses/AddWarehouses.aspx" CssClass="nav-link nav-link-sub ps-5 text-muted small">
                                             Add Warehouse
                                         </asp:HyperLink>
                                     </li>
