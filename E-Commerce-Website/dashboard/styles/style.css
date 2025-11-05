@@ -1,9 +1,4 @@
-﻿/*
-  Organized CSS for the Management System UI
-  Based on the provided screenshots.
-*/
-
-/* ------------------------- */
+﻿/* ------------------------- */
 /* --- Root Variables --- */
 /* ------------------------- */
 
@@ -69,6 +64,7 @@ body {
     flex: 1;
     padding: var(--spacing-lg);
     overflow-y: auto;
+    background-color: rgb(245,245,250);
 }
 
 
@@ -633,3 +629,333 @@ body {
         .quick-stat-item.stat-inventory .stat-value {
             color: var(--color-dark);
         }
+
+
+/* ------------------------- */
+/* --- Page Header (Branches/Employees) --- */
+/* ------------------------- */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+    .page-header h1 {
+        margin: 0;
+    }
+
+/* ------------------------- */
+/* --- Table Controls (Search & Filter) --- */
+/* ------------------------- */
+
+.table-controls-row {
+    display: flex;
+    gap: var(--spacing-base);
+    margin-bottom: var(--spacing-base);
+}
+
+.search-bar-container {
+    position: relative;
+    flex-grow: 1; /* Allows search bar to take most space */
+}
+
+    .search-bar-container .bi-search {
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-50%);
+        color: var(--color-text-light);
+    }
+
+.search-input {
+    width: 100%;
+    padding: 0.85rem 1rem 0.85rem 2.75rem; /* 0.85rem top/bottom, 1rem right, 2.75rem left for icon */
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    font-size: 0.95rem;
+    background-color: var(--color-bg-light);
+}
+
+    .search-input:focus {
+        outline: 2px solid var(--color-primary);
+        border-color: var(--color-primary);
+        background-color: var(--color-bg-white);
+    }
+
+/* Override for Bootstrap Dropdown to match design style */
+.bootstrap-dropdown-override {
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    font-size: 0.95rem;
+    background-color: var(--color-bg-light);
+    color: var(--color-text);
+    width: 200px !important; /* Fixed width for the dropdown as seen in the image */
+    cursor: pointer;
+}
+
+    .bootstrap-dropdown-override:focus {
+        outline: 2px solid var(--color-primary);
+        border-color: var(--color-primary);
+        background-color: var(--color-bg-white);
+    }
+
+
+
+/* ------------------------- */
+/* --- Reusable Data Table Structure --- */
+/* ------------------------- */
+
+.data-table {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Define a generic 6-column grid structure */
+/* Grid layout: Employee(1.5), Email(2), Dept(1), Title(1.5), Status(0.8), Actions(1.2) */
+.table-header,
+.table-row {
+    display: grid;
+    /* Adjust 'fr' units based on content needs for Employees page */
+    grid-template-columns: 1.5fr 2fr 1fr 1.5fr 0.8fr 1.2fr;
+    align-items: center;
+    gap: var(--spacing-base);
+    padding: var(--spacing-sm) 0;
+}
+
+.table-header {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--color-border); /* Thinner border for header */
+    padding-bottom: var(--spacing-base);
+    margin-bottom: var(--spacing-sm);
+}
+
+.table-row {
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--spacing-base) 0;
+    transition: background-color 0.15s ease;
+}
+
+    .table-row:hover {
+        background-color: var(--color-bg-light);
+    }
+
+    .table-row:last-child {
+        border-bottom: none;
+    }
+
+.table-cell {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    /* By default, plain text cell */
+}
+
+
+/* Employee/Entity Cell Specifics (e.g., Branch Name, Product Name) */
+.employee-cell {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-base);
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+.employee-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--color-bg-white);
+    flex-shrink: 0;
+}
+    /* Re-using dashboard colors */
+    .employee-avatar.bg-blue {
+        background-color: #3b82f6;
+    }
+
+    .employee-avatar.bg-purple {
+        background-color: #a855f7;
+    }
+
+    .employee-avatar.bg-orange {
+        background-color: #f97316;
+    }
+
+
+.employee-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.employee-name {
+    font-weight: 500;
+    color: var(--color-dark);
+    font-size: 1rem;
+}
+
+.employee-subtext {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: lowercase; /* as seen in the image */
+}
+
+    .status-badge.status-active {
+        background-color: #d1fae5; /* success light */
+        color: #065f46; /* success dark */
+    }
+
+    .status-badge.status-inactive {
+        background-color: #fce7f3; /* pink light */
+        color: #9d174d; /* pink dark */
+    }
+
+/* Action Icons */
+.action-icons {
+    display: flex;
+    gap: var(--spacing-base);
+    justify-content: flex-end; /* Align actions to the right */
+}
+
+.action-icon {
+    color: var(--color-text-light);
+    font-size: 1.15rem;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+    .action-icon:hover {
+        color: var(--color-dark);
+    }
+
+    .action-icon.action-delete:hover {
+        color: #ef4444; /* red-500 */
+    }
+
+/* ------------------------- */
+/* --- Form Specific Utilities --- */
+/* ------------------------- */
+
+/* Compact header for pages with action buttons (Add/Edit forms) */
+.page-header-compact {
+    margin-bottom: var(--spacing-md);
+}
+
+    .page-header-compact .header-actions {
+        display: flex;
+        gap: var(--spacing-sm);
+        align-items: center;
+    }
+
+/* Style for the main form card container */
+.form-card {
+    padding: var(--spacing-lg); /* Slightly more padding for the form content */
+}
+
+/* Section Header styling (Employee Details, System Information) */
+.form-section-header {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    margin-top: 0;
+}
+
+    .form-section-header.with-margin-top {
+        margin-top: var(--spacing-md);
+    }
+
+/* Ensure form controls (TextBox, DropDownList) look consistent */
+/* We rely on Bootstrap's .form-control and .form-select but apply our design tokens */
+.form-control,
+.form-select {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-text);
+    background-color: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        color: var(--color-dark);
+        background-color: var(--color-bg-white);
+        border-color: var(--color-primary);
+        outline: 0;
+        box-shadow: 0 0 0 0.1rem rgba(79, 70, 229, 0.25); /* Focus shadow using primary color */
+    }
+
+/* Image Upload Section Styling */
+.avatar-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--border-radius-lg);
+    background-color: var(--color-bg-light);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+    .avatar-placeholder i {
+        font-size: 3rem;
+        color: var(--color-text-light);
+    }
+
+/* Hide the default file input visually */
+.custom-file-input {
+    /* Using a specific file path and extension for the file input */
+    display: none;
+}
+
+/* Style the label to look like a button */
+.btn-upload-image {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 0.6rem 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-bg-white);
+    color: var(--color-text);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+    .btn-upload-image:hover {
+        background-color: var(--color-bg-light);
+        color: var(--color-dark);
+    }
+
+    .btn-upload-image i {
+        font-size: 1.1rem;
+        color: var(--color-primary);
+    }
