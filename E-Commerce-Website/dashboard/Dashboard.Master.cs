@@ -20,6 +20,8 @@ namespace E_Commerce_Website.dashboard
             lblUserName.Text = Session["FirstName"] + " " + Session["LastName"];
             lblUserRole.Text = Session["Role"].ToString();
 
+            lblAuthError.Text = Session["auth_error"].ToString();
+
         }
     }
 }

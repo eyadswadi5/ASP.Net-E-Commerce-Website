@@ -67,6 +67,7 @@ namespace E_Commerce_Website
                     {
                         reader.Read();
 
+                        Session["auth_error"] = "";
                         Session["Role"] = reader["role_type"].ToString();
                         Session["Email"] = reader["email"].ToString();
                         Session["FirstName"] = reader["first_name"].ToString();

@@ -180,6 +180,8 @@
                     <!-- Additional sections follow same pattern -->
                 </nav>
 
+                <asp:Label ID="lblAuthError" CssClass="text-danger" Text="" runat="server" />
+
                 <div class="sidebar-footer border-top pt-3">
                     <asp:LinkButton ID="lnkLogout" runat="server" CssClass="nav-link d-flex align-items-center gap-2">
                         <img src="/assets/icons/logout.svg" alt="logout" />
