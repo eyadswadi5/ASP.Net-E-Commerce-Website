@@ -85,6 +85,7 @@
     <Content Include="dashboard\sections\employees\Employees.aspx" />
     <Content Include="dashboard\sections\LandingPage.aspx" />
     <Content Include="dashboard\sections\warehouses\AddWarehouses.aspx" />
+    <Content Include="dashboard\sections\warehouses\EditWarehouse.aspx" />
     <Content Include="dashboard\sections\warehouses\Warehouses.aspx" />
     <Content Include="dashboard\styles\style.css" />
     <Content Include="lib\bootstrap\dist\css\bootstrap-grid.css" />
@@ -216,6 +217,13 @@
     </Compile>
     <Compile Include="dashboard\sections\warehouses\AddWarehouses.aspx.designer.cs">
       <DependentUpon>AddWarehouses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dashboard\sections\warehouses\EditWarehouse.aspx.cs">
+      <DependentUpon>EditWarehouse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard\sections\warehouses\EditWarehouse.aspx.designer.cs">
+      <DependentUpon>EditWarehouse.aspx</DependentUpon>
     </Compile>
     <Compile Include="dashboard\sections\warehouses\Warehouses.aspx.cs">
       <DependentUpon>Warehouses.aspx</DependentUpon>

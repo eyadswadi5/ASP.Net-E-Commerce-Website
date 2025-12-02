@@ -11,8 +11,17 @@ namespace E_Commerce_Website.dashboard.sections.warehouses
 {
 
 
-    public partial class AddWarehouses
+    public partial class EditWarehouse
     {
+
+        /// <summary>
+        /// PreWarehouseId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PreWarehouseId;
 
         /// <summary>
         /// lblStatusMessage control.

@@ -1,20 +1,19 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dashboard/Dashboard.Master" AutoEventWireup="true" CodeBehind="AddWarehouses.aspx.cs" Inherits="E_Commerce_Website.dashboard.sections.warehouses.AddWarehouses" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dashboard/Dashboard.Master" AutoEventWireup="true" CodeBehind="EditWarehouse.aspx.cs" Inherits="E_Commerce_Website.dashboard.sections.warehouses.EditWarehouse" %>
 <%@ MasterType VirtualPath="~/dashboard/Dashboard.master" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+        <div>
         <!-- Page Header -->
         <div class="page-header page-header-compact">
             <div>
-                <h1>Add New Warehouse</h1>
+                <h1>Edit Warehouse <pre id="PreWarehouseId" runat="server"></pre></h1>
                 <p class="subtitle">Enter the required details for new warehouse</p>
                 <asp:Label ID="lblStatusMessage" Text="" runat="server" CssClass="text-secondary" />
             </div>
             <div class="header-actions">
                 <asp:HyperLink ID="HyperLink1" NavigateUrl="~/dashboard/sections/warehouses/Warehouses.aspx" runat="server" CssClass="btn btn-secondary">Cancel</asp:HyperLink>
-                <asp:Button ID="btnSave" runat="server" Text="Save Branch" CssClass="btn btn-primary" OnClick="btnSave_Click" />
+                <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" OnClick="btnSave_Click" />
             </div>
         </div>
 
@@ -44,8 +43,8 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="<%= ddlManager.ClientID %>">Manager</label>
-                        <asp:DropDownList ID="ddlManager" runat="server" CssClass="form-select" DataSourceID="Managers_Sql_DS" DataTextField="full_name" DataValueField="id"></asp:DropDownList>
-                        <asp:SqlDataSource runat="server" ID="Managers_Sql_DS" ConnectionString='<%$ ConnectionStrings:DBConnectionString %>' SelectCommand="SELECT personal_information.id, (first_name + ' ' + last_name) as full_name FROM personal_information Join roles ON personal_information.role_id = roles.id WHERE roles.type = 'manager'"></asp:SqlDataSource>
+                        <asp:DropDownList ID="ddlManager" runat="server" CssClass="form-select" DataSourceID="Managers_Sql_DS" DataTextField="full_name" DataValueField="manager_id"></asp:DropDownList>
+                        <asp:SqlDataSource runat="server" ID="Managers_Sql_DS" ConnectionString='<%$ ConnectionStrings:DBConnectionString %>' SelectCommand="SELECT peri.id as manager_id, (peri.first_name + ' ' + peri.last_name) as full_name FROM personal_information as peri Join roles ON peri.role_id = roles.id WHERE roles.type = 'manager'"></asp:SqlDataSource>
                         <asp:Label ID="lblMangerStatus" Text="" CssClass="text-danger" runat="server" />
                     </div>
 
@@ -66,4 +65,5 @@
            
         </div>
     </div>
+
 </asp:Content>

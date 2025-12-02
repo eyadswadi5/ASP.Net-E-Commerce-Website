@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -74,6 +75,9 @@ namespace E_Commerce_Website
                         Session["Phone"] = reader["phone"].ToString();
                         Session["Gender"] = reader["gender"].ToString();
                         Session["Photo_url"] = reader["photo_url"].ToString();
+
+                        Session["AlertMessage"] = string.Empty;
+                        Session["AlertType"] = string.Empty;
 
                         FormsAuthentication.RedirectFromLoginPage(username, false);
 

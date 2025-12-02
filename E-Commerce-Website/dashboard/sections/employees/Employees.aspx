@@ -19,89 +19,35 @@
                     <i class="bi bi-search"></i>
                     <asp:TextBox ID="txtSearch" runat="server" CssClass="search-input" placeholder="Search employees..."></asp:TextBox>
                 </div>
-                
-                <asp:DropDownList ID="ddlDepartments" runat="server" CssClass="form-select bootstrap-dropdown-override">
-                    <asp:ListItem Text="All Departments" Value="All" Selected="True" />
-                    <asp:ListItem Text="IT" Value="IT" />
-                    <asp:ListItem Text="HR" Value="HR" />
-                    <asp:ListItem Text="Sales" Value="Sales" />
-                </asp:DropDownList>
+                <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary" OnClick="btnSearch_Click" />
             </div>
 
-            <div class="data-table">
-                <div class="table-header">
-                    <div class="table-cell">Employee</div>
-                    <div class="table-cell">Email</div>
-                    <div class="table-cell">Department</div>
-                    <div class="table-cell">Job Title</div>
-                    <div class="table-cell">Status</div>
-                    <div class="table-cell">Actions</div>
-                </div>
 
-                <div class="table-row">
-                    <div class="table-cell employee-cell">
-                        <div class="employee-avatar bg-blue">JD</div>
-                        <div class="employee-info">
-                            <span class="employee-name">John Doe</span>
-                            <span class="employee-subtext">+1234567890</span>
-                        </div>
-                    </div>
-                    <div class="table-cell">john.doe@company.com</div>
-                    <div class="table-cell">IT</div>
-                    <div class="table-cell">Software Engineer</div>
-                    <div class="table-cell">
-                        <span class="status-badge status-active">active</span>
-                    </div>
-                    <div class="table-cell action-icons">
-                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="action-icon"><i class="bi bi-eye"></i></asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton2" runat="server" CssClass="action-icon"><i class="bi bi-pencil"></i></asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton3" runat="server" CssClass="action-icon"><i class="bi bi-trash"></i></asp:LinkButton>
-                    </div>
-                </div>
+            <asp:GridView ID="EmployeesGridView" runat="server" DataSourceID="Employees_SQL_DS" AutoGenerateColumns="False" AllowPaging="True"
+                EmptyDataText="No Employees found."
+                OnRowDataBound="EmployeesGridView_RowDataBound"
+                CssClass="data-table"
+                GridLines="None"
+                HeaderStyle-CssClass="table-header"
+                RowStyle-CssClass="table-row"
+                CellPadding="1" DataKeyNames="id">
+                <Columns>
+                    <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" ItemStyle-CssClass="table-cell" InsertVisible="False" ReadOnly="True"></asp:BoundField>
+                    <asp:BoundField DataField="Employee" HeaderText="Employee" SortExpression="Employee" ItemStyle-CssClass="table-cell" ReadOnly="True"></asp:BoundField>
+                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" ItemStyle-CssClass="table-cell"></asp:BoundField>
+                    <asp:BoundField DataField="Department" HeaderText="Department" SortExpression="Department" ItemStyle-CssClass="table-cell"></asp:BoundField>
+                    <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" ItemStyle-CssClass="table-cell"></asp:BoundField>
+                </Columns>
+            </asp:GridView>
 
-                <div class="table-row">
-                    <div class="table-cell employee-cell">
-                        <div class="employee-avatar bg-purple">JS</div>
-                        <div class="employee-info">
-                            <span class="employee-name">Jane Smith</span>
-                            <span class="employee-subtext">+1234567891</span>
-                        </div>
-                    </div>
-                    <div class="table-cell">jane.smith@company.com</div>
-                    <div class="table-cell">HR</div>
-                    <div class="table-cell">HR Manager</div>
-                    <div class="table-cell">
-                        <span class="status-badge status-active">active</span>
-                    </div>
-                    <div class="table-cell action-icons">
-                        <asp:LinkButton ID="LinkButton4" runat="server" CssClass="action-icon"><i class="bi bi-eye"></i></asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton5" runat="server" CssClass="action-icon"><i class="bi bi-pencil"></i></asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton6" runat="server" CssClass="action-icon"><i class="bi bi-trash"></i></asp:LinkButton>
-                    </div>
-                </div>
-
-                 <div class="table-row">
-                    <div class="table-cell employee-cell">
-                        <div class="employee-avatar bg-orange">MJ</div>
-                        <div class="employee-info">
-                            <span class="employee-name">Mike Johnson</span>
-                            <span class="employee-subtext">+1234567892</span>
-                        </div>
-                    </div>
-                    <div class="table-cell">mikej@company.com</div>
-                    <div class="table-cell">Sales</div>
-                    <div class="table-cell">Sales Representative</div>
-                    <div class="table-cell">
-                        <span class="status-badge status-active">active</span>
-                    </div>
-                    <div class="table-cell action-icons">
-                        <asp:LinkButton ID="LinkButton7" runat="server" CssClass="action-icon"><i class="bi bi-eye"></i></asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton8" runat="server" CssClass="action-icon"><i class="bi bi-pencil"></i></asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton9" runat="server" CssClass="action-icon"><i class="bi bi-trash"></i></asp:LinkButton>
-                    </div>
-                </div>
-
-            </div>
+            <asp:SqlDataSource runat="server" ID="Employees_SQL_DS" ConnectionString='<%$ ConnectionStrings:DBConnectionString %>' SelectCommand="SELECT TOP (1000) peri.[id]
+      ,peri.[first_name] + ' ' + peri.[last_name] as Employee
+      ,peri.[email] as Email
+	  ,d.[name] as Department
+	  ,emps.[status] as [Status]
+  FROM [STORE_DB].[dbo].[personal_information] as peri
+  JOIN departments as d ON d.id = peri.department_id 
+  JOIN employee_status as emps ON emps.id = peri.employee_status_id"></asp:SqlDataSource>
         </div>
     </div>
 </asp:Content>

@@ -16,7 +16,11 @@ namespace E_Commerce_Website.dashboard.sections.employees
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Role"].ToString().ToLower() != "employee")
+            {
+                Session["auth_error"] = "You'r not permitted to access this feature.";
+                Response.Redirect("~/dashboard/sections/employees/Employees.aspx");
+            }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
