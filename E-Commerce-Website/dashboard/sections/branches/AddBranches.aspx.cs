@@ -16,14 +16,18 @@ namespace E_Commerce_Website.dashboard.sections.branches
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Role"].ToString().ToLower() != "owner" ||
-                Session["Department"].ToString().ToLower() == "branches")
+            if (Session["Department"].ToString().ToLower() == "branches")
             {
-                if (Session["Role"].ToString().ToLower() != "manager" || Session["Role"].ToString().ToLower() != "employee")
+                if (Session["Role"].ToString().ToLower() != "manager" && Session["Role"].ToString().ToLower() != "employee")
                 {
                     Master.StoreSessionAlert("You'r not permitted to access this feature.", "danger");
                     Response.Redirect("~/dashboard/sections/branches/Branches.aspx");
                 }
+            }
+            else if (Session["Role"].ToString().ToLower() != "owner")
+            {
+                Master.StoreSessionAlert("You'r not permitted to access this feature.", "danger");
+                Response.Redirect("~/dashboard/sections/branches/Branches.aspx");
             }
         }
 

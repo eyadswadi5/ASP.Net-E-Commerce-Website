@@ -53,6 +53,20 @@ namespace E_Commerce_Website.dashboard.sections.warehouses
         {
             if (e.CommandName == "DeleteWarehouse")
             {
+                if (Session["Department"].ToString().ToLower() == "warehouses")
+                {
+                    if (Session["Role"].ToString().ToLower() != "manager" && Session["Role"].ToString().ToLower() != "employee")
+                    {
+                        Master.StoreSessionAlert("You'r not permitted to access this feature.", "danger");
+                        Response.Redirect("~/dashboard/sections/warehouses/Warehouses.aspx");
+                    }
+                }
+                else if (Session["Role"].ToString().ToLower() != "owner")
+                {
+                    Master.StoreSessionAlert("You'r not permitted to access this feature.", "danger");
+                    Response.Redirect("~/dashboard/sections/warehouses/Warehouses.aspx");
+                }
+
                 int warehouseId = Convert.ToInt32(e.CommandArgument);
 
                 string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;

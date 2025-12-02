@@ -59,6 +59,20 @@ namespace E_Commerce_Website.dashboard.sections.employees
         {
             if (e.CommandName == "DeleteEmployee")
             {
+                if (Session["Department"].ToString().ToLower() == "human-resources")
+                {
+                    if (Session["Role"].ToString().ToLower() != "manager" && Session["Role"].ToString().ToLower() != "employee")
+                    {
+                        Master.StoreSessionAlert("You'r not permitted to access this feature.", "danger");
+                        Response.Redirect("~/dashboard/sections/employees/Employees.aspx");
+                    }
+                }
+                else if (Session["Role"].ToString().ToLower() != "owner")
+                {
+                    Master.StoreSessionAlert("You'r not permitted to access this feature.", "danger");
+                    Response.Redirect("~/dashboard/sections/employees/Employees.aspx");
+                }
+
                 int empId = Convert.ToInt32(e.CommandArgument);
 
                 string connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;

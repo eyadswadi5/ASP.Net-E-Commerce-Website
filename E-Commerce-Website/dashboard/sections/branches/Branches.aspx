@@ -31,9 +31,9 @@
                 GridLines="None"
                 HeaderStyle-CssClass="table-header"
                 RowStyle-CssClass="table-row"
-                CellPadding="1">
+                CellPadding="1" DataKeyNames="id">
                 <Columns>
-                    <asp:boundfield datafield="id" ItemStyle-CssClass="table-cell" HeaderText="ID" SortExpression="id" visible="false"></asp:boundfield>
+                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" InsertVisible="False" SortExpression="id"></asp:BoundField>
                     <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" ItemStyle-CssClass="table-cell"></asp:BoundField>
                     <asp:BoundField DataField="Location" HeaderText="Location" SortExpression="Location" ItemStyle-CssClass="table-cell" ReadOnly="True"></asp:BoundField>
                     <asp:BoundField DataField="phone" HeaderText="phone" SortExpression="phone" ItemStyle-CssClass="table-cell"></asp:BoundField>
@@ -71,7 +71,7 @@
                 </Columns>
             </asp:GridView>
 
-            <asp:SqlDataSource runat="server" ID="Branches_SQL_DS" ConnectionString='<%$ ConnectionStrings:DBConnectionString %>' SelectCommand="SELECT TOP (1000) stores.[id]
+            <asp:SqlDataSource runat="server" ID="Branches_SQL_DS" ConnectionString='<%$ ConnectionStrings:DBConnectionString %>' SelectCommand="SELECT TOP (1000) stores.[id] as id
               ,stores.[name]
               ,stores.[address] + ', ' + stores.[city] as Location
               ,stores.[phone]
