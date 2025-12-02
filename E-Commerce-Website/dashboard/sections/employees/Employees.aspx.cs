@@ -54,5 +54,31 @@ namespace E_Commerce_Website.dashboard.sections.employees
         {
 
         }
+
+        protected void EmployeesGridView_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "DeleteEmployee")
+            {
+                int empId = Convert.ToInt32(e.CommandArgument);
+
+                string connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+                string query = "DELETE FROM employees WHERE id = @id";
+
+                using(SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Prepare();
+                    cmd.Parameters.AddWithValue("@id", empId);
+
+                    conn.Open();
+                    int affected_rows = cmd.ExecuteNonQuery();
+
+                    if (affected_rows > 0)
+                        Master.ShowAlert("Employee deleted successfuly", "success");
+                    else
+                        Master.ShowAlert("Unable to delete employee", "danger");
+                }
+            }
+        }
     }
 }

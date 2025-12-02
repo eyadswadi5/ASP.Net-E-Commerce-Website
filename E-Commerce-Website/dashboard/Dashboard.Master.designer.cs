@@ -141,58 +141,31 @@ namespace E_Commerce_Website.dashboard
         protected global::System.Web.UI.WebControls.HyperLink HyperLink8;
 
         /// <summary>
-        /// WanrningAlertPanel control.
+        /// AlertPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel WanrningAlertPanel;
+        protected global::System.Web.UI.WebControls.Panel AlertPanel;
 
         /// <summary>
-        /// lblWarningAlert control.
+        /// AlertTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblWarningAlert;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertTitle;
 
         /// <summary>
-        /// SuccessAlertPanel control.
+        /// lblAlert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel SuccessAlertPanel;
-
-        /// <summary>
-        /// lblSuccessAlert control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSuccessAlert;
-
-        /// <summary>
-        /// DangerAlertPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel DangerAlertPanel;
-
-        /// <summary>
-        /// lblDangerAlert control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDangerAlert;
+        protected global::System.Web.UI.WebControls.Label lblAlert;
 
         /// <summary>
         /// lnkLogout control.

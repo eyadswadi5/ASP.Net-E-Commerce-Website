@@ -16,10 +16,14 @@ namespace E_Commerce_Website.dashboard.sections.employees
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Role"].ToString().ToLower() != "employee")
+            if (Session["Role"].ToString().ToLower() != "owner" ||
+                Session["Department"].ToString().ToLower() == "human-resources")
             {
-                Session["auth_error"] = "You'r not permitted to access this feature.";
-                Response.Redirect("~/dashboard/sections/employees/Employees.aspx");
+                if (Session["Role"].ToString().ToLower() != "manager" || Session["Role"].ToString().ToLower() != "employee")
+                {
+                    Master.StoreSessionAlert("You'r not permitted to access this feature.", "danger");
+                    Response.Redirect("~/dashboard/sections/employees/Employees.aspx");
+                }
             }
         }
 

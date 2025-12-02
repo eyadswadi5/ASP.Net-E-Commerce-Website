@@ -179,19 +179,8 @@
                     </div>
                 </nav>
 
-
-                <asp:Panel id="WanrningAlertPanel" class="d-none" role="alert" runat="server">
-                    <strong>Warning!</strong> <asp:Label ID="lblWarningAlert" Text="" runat="server"/>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </asp:Panel>
-
-                <asp:Panel id="SuccessAlertPanel" class="d-none" role="alert" runat="server">
-                    <strong>Success!</strong> <asp:Label ID="lblSuccessAlert" Text="" runat="server"/>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </asp:Panel>
-
-                <asp:Panel id="DangerAlertPanel" class="d-none" role="alert" runat="server">
-                    <strong>Something Went Wrong!</strong> <asp:Label ID="lblDangerAlert" Text="" runat="server"/>
+                <asp:Panel id="AlertPanel" class="d-none" role="alert" runat="server">
+                    <strong id="AlertTitle" runat="server" class="small"></strong> <asp:Label ID="lblAlert" Text="" CssClass="small" runat="server"/>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </asp:Panel>
 

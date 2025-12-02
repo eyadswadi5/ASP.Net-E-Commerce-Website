@@ -58,5 +58,19 @@ namespace E_Commerce_Website.dashboard.sections.branches
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource Branches_SQL_DS;
+
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new E_Commerce_Website.dashboard.Dashboard Master
+        {
+            get
+            {
+                return ((E_Commerce_Website.dashboard.Dashboard)(base.Master));
+            }
+        }
     }
 }

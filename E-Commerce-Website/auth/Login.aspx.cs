@@ -51,12 +51,15 @@ namespace E_Commerce_Website
                     reader.Close();
 
                     query = "select " +
-                        "personal_information.*, " +
-                        "roles.type as role_type " +
-                        "from personal_information " +
+                        "peri.*, " +
+                        "roles.type as role_type, " +
+                        "dps.name as department_name " +
+                        "from personal_information as peri " +
                         "join roles " +
-                        "on personal_information.role_id = roles.id " +
-                        "where personal_information.user_id = @UserID";
+                        "on peri.role_id = roles.id " +
+                        "join [departments] as dps " +
+                        "on dps.id = peri.department_id " +
+                        "where peri.user_id = @UserID";
 
                     cmd.CommandText = query;
                     cmd.Prepare();
@@ -69,6 +72,7 @@ namespace E_Commerce_Website
                         reader.Read();
 
                         Session["Role"] = reader["role_type"].ToString();
+                        Session["Department"] = reader["department_name"].ToString();
                         Session["Email"] = reader["email"].ToString();
                         Session["FirstName"] = reader["first_name"].ToString();
                         Session["LastName"] = reader["last_name"].ToString();

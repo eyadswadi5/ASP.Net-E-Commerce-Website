@@ -1,5 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dashboard/Dashboard.Master" AutoEventWireup="true" CodeBehind="AddEmployees.aspx.cs" Inherits="E_Commerce_Website.dashboard.sections.employees.AddEmployees" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dashboard/Dashboard.Master" AutoEventWireup="true" CodeBehind="EditEmployee.aspx.cs" Inherits="E_Commerce_Website.dashboard.sections.employees.EditEmployee" %>
 <%@ MasterType VirtualPath="~/dashboard/Dashboard.Master" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -7,13 +8,13 @@
         <!-- Page Header -->
         <div class="page-header page-header-compact">
             <div>
-                <h1>Add New Employee</h1>
-                <p class="subtitle">Enter the required details to onboard a new employee</p>
-                <asp:Label ID="lblStatusMessage" Text="" runat="server" CssClass="text-secondary" />
+                <h1>Edit Employee</h1>
+                <p class="subtitle">Update the required details to employee</p>
+                <asp:Label ID="debuglbl" Text="" runat="server" />
             </div>
             <div class="header-actions">
                 <asp:HyperLink ID="HyperLink1" NavigateUrl="~/dashboard/sections/employees/Employees.aspx" runat="server" CssClass="btn btn-secondary">Cancel</asp:HyperLink>
-                <asp:Button ID="btnSave" runat="server" Text="Save Employee" CssClass="btn btn-primary" OnClick="btnSave_Click" />
+                <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" OnClick="btnSave_Click" />
             </div>
         </div>
 
@@ -92,11 +93,6 @@
                 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="<%= txtEmployeeUsername.ClientID %>">Employee Username</label>
-                        <asp:TextBox ID="txtEmployeeUsername" runat="server" CssClass="form-control" Required="true" placeholder="exampleAlSwadi@123"></asp:TextBox>
-                    </div>
-
-                    <div class="form-group">
                         <label for="<%= txtEmployeeIDNumber.ClientID %>">ID Number</label>
                         <asp:TextBox ID="txtEmployeeIDNumber" runat="server" CssClass="form-control" Required="true" placeholder="e.g. 2200778855"></asp:TextBox>
                     </div>
@@ -119,10 +115,6 @@
                 </div>
 
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="<%= txtEmployeePassword.ClientID %>">Employee Password</label>
-                        <asp:TextBox ID="txtEmployeePassword" runat="server" CssClass="form-control" Required="true" TextMode="Password" placeholder="Password"></asp:TextBox>
-                    </div>
 
                     <div class="form-group">
                         <label for="<%= txtSalary.ClientID %>">Basic Salary</label>
@@ -145,4 +137,5 @@
             </div>
         </div>
     </div>
+
 </asp:Content>

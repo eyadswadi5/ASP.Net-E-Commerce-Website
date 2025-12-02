@@ -46,20 +46,23 @@ namespace E_Commerce_Website.dashboard
         {
             if (alertType == "warning")
             {
-                lblWarningAlert.Text = message;
-                WanrningAlertPanel.CssClass = "alert alert-warning alert-dismissible fade show";
+                AlertTitle.InnerText = "Warning!";
+                lblAlert.Text = message;
+                AlertPanel.CssClass = "alert alert-warning alert-dismissible fade show";
             }
 
             if (alertType == "success")
             {
-                lblSuccessAlert.Text = message;
-                SuccessAlertPanel.CssClass = "alert alert-success alert-dismissible fade show";
+                AlertTitle.InnerText = "Success!";
+                lblAlert.Text = message;
+                AlertPanel.CssClass = "alert alert-success alert-dismissible fade show";
             }
 
             if (alertType == "danger")
             {
-                lblDangerAlert.Text = message;
-                DangerAlertPanel.CssClass = "alert alert-danger alert-dismissible fade show";
+                AlertTitle.InnerText = "Something Went Wrong!";
+                lblAlert.Text = message;
+                AlertPanel.CssClass = "alert alert-danger alert-dismissible fade show";
             }
         }
     }

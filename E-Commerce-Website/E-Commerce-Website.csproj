@@ -81,7 +81,9 @@
     <Content Include="assets\icons\settings.svg" />
     <Content Include="dashboard\sections\branches\AddBranches.aspx" />
     <Content Include="dashboard\sections\branches\Branches.aspx" />
+    <Content Include="dashboard\sections\branches\EditBranch.aspx" />
     <Content Include="dashboard\sections\employees\AddEmployees.aspx" />
+    <Content Include="dashboard\sections\employees\EditEmployee.aspx" />
     <Content Include="dashboard\sections\employees\Employees.aspx" />
     <Content Include="dashboard\sections\LandingPage.aspx" />
     <Content Include="dashboard\sections\warehouses\AddWarehouses.aspx" />
@@ -190,12 +192,26 @@
     <Compile Include="dashboard\sections\branches\Branches.aspx.designer.cs">
       <DependentUpon>Branches.aspx</DependentUpon>
     </Compile>
+    <Compile Include="dashboard\sections\branches\EditBranch.aspx.cs">
+      <DependentUpon>EditBranch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard\sections\branches\EditBranch.aspx.designer.cs">
+      <DependentUpon>EditBranch.aspx</DependentUpon>
+    </Compile>
     <Compile Include="dashboard\sections\employees\AddEmployees.aspx.cs">
       <DependentUpon>AddEmployees.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="dashboard\sections\employees\AddEmployees.aspx.designer.cs">
       <DependentUpon>AddEmployees.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dashboard\sections\employees\EditEmployee.aspx.cs">
+      <DependentUpon>EditEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard\sections\employees\EditEmployee.aspx.designer.cs">
+      <DependentUpon>EditEmployee.aspx</DependentUpon>
     </Compile>
     <Compile Include="dashboard\sections\employees\Employees.aspx.cs">
       <DependentUpon>Employees.aspx</DependentUpon>

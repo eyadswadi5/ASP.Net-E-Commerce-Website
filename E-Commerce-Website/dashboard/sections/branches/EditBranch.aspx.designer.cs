@@ -11,7 +11,7 @@ namespace E_Commerce_Website.dashboard.sections.branches
 {
 
 
-    public partial class AddBranch
+    public partial class EditBranch
     {
 
         /// <summary>

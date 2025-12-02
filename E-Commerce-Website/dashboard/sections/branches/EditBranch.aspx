@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dashboard/Dashboard.Master" AutoEventWireup="true" CodeBehind="AddBranches.aspx.cs" Inherits="E_Commerce_Website.dashboard.sections.branches.AddBranch" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dashboard/Dashboard.Master" AutoEventWireup="true" CodeBehind="EditBranch.aspx.cs" Inherits="E_Commerce_Website.dashboard.sections.branches.EditBranch" %>
 <%@ MasterType VirtualPath="~/dashboard/Dashboard.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -6,13 +6,13 @@
     <div>
         <div class="page-header page-header-compact">
             <div>
-                <h1>Add New Branch</h1>
-                <p class="subtitle">Enter the required details to onboard a new branch</p>
+                <h1>Edit Branch</h1>
+                <p class="subtitle">Update the required details to branch</p>
                 <asp:Label ID="lblStatusMessage" Text="" runat="server" CssClass="text-secondary" />
             </div>
             <div class="header-actions">
                 <asp:HyperLink ID="HyperLink1" NavigateUrl="~/dashboard/sections/branches/Branches.aspx" runat="server" CssClass="btn btn-secondary">Cancel</asp:HyperLink>
-                <asp:Button ID="btnSave" runat="server" Text="Save Branch" CssClass="btn btn-primary" OnClick="btnSave_Click" />
+                <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" OnClick="btnSave_Click" />
             </div>
         </div>
 

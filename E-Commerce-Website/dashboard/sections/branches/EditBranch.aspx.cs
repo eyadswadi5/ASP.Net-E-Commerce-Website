@@ -12,7 +12,7 @@ using System.Web.UI.WebControls;
 
 namespace E_Commerce_Website.dashboard.sections.branches
 {
-    public partial class AddBranch : System.Web.UI.Page
+    public partial class EditBranch : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,32 +25,56 @@ namespace E_Commerce_Website.dashboard.sections.branches
                     Response.Redirect("~/dashboard/sections/branches/Branches.aspx");
                 }
             }
+
+            if (IsPostBack)
+                return;
+
+            int branchId = Convert.ToInt32(Request.QueryString["id"]);
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+            string query = "SELECT * FROM stores WHERE id = @id";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Prepare();
+                cmd.Parameters.AddWithValue("@id", branchId);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+
+                    txtName.Text = Convert.ToString(reader["name"].ToString());
+                    txtAddress.Text = Convert.ToString(reader["address"].ToString());
+                    txtCity.Text = Convert.ToString(reader["city"].ToString());
+                    txtPhone.Text = Convert.ToString(reader["phone"].ToString());
+                    ddlManager.SelectedValue = Convert.ToString(reader["manager_id"].ToString());
+                }
+            }
+
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            string branchName = txtName?.Text.Trim() ?? string.Empty;
-            string city = txtCity?.Text.Trim() ?? string.Empty;
-            string address = txtAddress?.Text.Trim() ?? string.Empty;
-            string phoneNumber = txtPhone?.Text.Trim() ?? string.Empty;
-            int managerId = Convert.ToInt32(ddlManager?.SelectedValue);            
+            int branchId = Convert.ToInt32(Request.QueryString["id"]);
 
             string uploadedFileName = null;
             string hashedFileName = null;
-            string[] allowedExtensions = { ".pdf"};
+            string filePath = null;
+            string[] allowedExtensions = { ".pdf" };
             string[] allowedContentTypes = { "application/pdf" };
-            int uploadedFileSize = 0;
 
             if (fileUploadBrochure != null && fileUploadBrochure.HasFile)
             {
                 uploadedFileName = Path.GetFileName(fileUploadBrochure.FileName);
-                uploadedFileSize = fileUploadBrochure.PostedFile.ContentLength;
                 string uploadedFileExtention = Path.GetExtension(uploadedFileName).ToLower();
                 string uploadedContentType = fileUploadBrochure.PostedFile.ContentType;
 
                 if (!allowedExtensions.Contains(uploadedFileExtention) || !allowedContentTypes.Contains(uploadedContentType))
                 {
-                    lblFileUploadMessage.Text = "Only PDF file are allowed.";
+                    Master.ShowAlert("Only PDF file are allowed.", "danger");
                     return;
                 }
 
@@ -59,54 +83,44 @@ namespace E_Commerce_Website.dashboard.sections.branches
                 var saveDir = Server.MapPath("~/storage/file/brochures/branches");
                 Directory.CreateDirectory(saveDir);
                 var savePath = Path.Combine(saveDir, hashedFileName);
+                filePath = "/storage/file/brochures/branches/" + hashedFileName;
                 fileUploadBrochure.SaveAs(savePath);
             }
 
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+            string query = @"UPDATE stores SET 
+                name = @name, 
+                address = @address, 
+                city = @city, 
+                phone = @phone, 
+                manager_id = @manager_id";
+            query = string.IsNullOrEmpty(filePath) ? query : query + ", file_url = @file_url";
+            query += " WHERE id = @id";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                string query = "SELECT COUNT(*) as num FROM personal_information JOIN roles ON personal_information.role_id = roles.id WHERE personal_information.id = @Manager_ID AND roles.type = 'manager'";
-                SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Prepare();
-                cmd.Parameters.AddWithValue("@Manager_ID", managerId);
+                cmd.Parameters.AddWithValue("@name", txtName.Text.Trim());
+                cmd.Parameters.AddWithValue("@address", txtAddress.Text.Trim());
+                cmd.Parameters.AddWithValue("@city", txtCity.Text.Trim());
+                cmd.Parameters.AddWithValue("@phone", txtPhone.Text.Trim());
+                cmd.Parameters.AddWithValue("@manager_id", ddlManager.SelectedValue);
+                cmd.Parameters.AddWithValue("@id", branchId);
+                if (!string.IsNullOrEmpty(filePath))
+                    cmd.Parameters.AddWithValue("@file_url", filePath);
+
                 conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
+                int affected_rows = cmd.ExecuteNonQuery();
 
-                if (!reader.HasRows)
+                if (affected_rows > 0)
                 {
-                    Master.ShowAlert("Error: The provided id didn't belongs to a manager.", "warning");
-                    return;
-                }
-
-                reader.Close();
-
-                query = "INSERT INTO stores VALUES (@Name, @City, @Address, @Phone, @File_url, @Manager_ID);";
-                cmd.CommandText = query;
-
-                cmd.Parameters.AddWithValue("@Name", branchName);
-                cmd.Parameters.AddWithValue("@City", city);
-                cmd.Parameters.AddWithValue("@Address", address);
-                cmd.Parameters.AddWithValue("@Phone", phoneNumber);
-                
-                string filePath = string.Empty;
-                if (!string.IsNullOrEmpty(hashedFileName))
-                {
-                    filePath = "/storage/files/brochures/branches/" + hashedFileName;
-                }
-                cmd.Parameters.AddWithValue("@File_url", filePath);
-
-                int created = cmd.ExecuteNonQuery();
-
-                if (created > 0)
-                {
-                    Master.StoreSessionAlert("Store created successfully!", "success");
+                    Master.StoreSessionAlert("Branch updated successfully", "success");
                     Response.Redirect("~/dashboard/sections/branches/Branches.aspx");
-                } else
-                    Master.StoreSessionAlert("Error Creating store branch", "danger");
-                return;
+                }
+                else
+                    Master.ShowAlert("Error updating branch", "danger");
             }
-
         }
 
         private string GetHashedFileName(string originalFileName)

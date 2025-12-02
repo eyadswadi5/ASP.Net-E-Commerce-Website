@@ -16,7 +16,15 @@ namespace E_Commerce_Website.dashboard.sections.warehouses
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Role"].ToString().ToLower() != "owner" ||
+                Session["Department"].ToString().ToLower() == "warehouses")
+            {
+                if (Session["Role"].ToString().ToLower() != "manager" || Session["Role"].ToString().ToLower() != "employee")
+                {
+                    Master.StoreSessionAlert("You'r not permitted to access this feature.", "danger");
+                    Response.Redirect("~/dashboard/sections/warehouses/Warehouses.aspx");
+                }
+            }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)

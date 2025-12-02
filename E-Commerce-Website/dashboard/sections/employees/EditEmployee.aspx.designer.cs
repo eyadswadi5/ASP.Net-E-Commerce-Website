@@ -11,17 +11,17 @@ namespace E_Commerce_Website.dashboard.sections.employees
 {
 
 
-    public partial class AddEmployees
+    public partial class EditEmployee
     {
 
         /// <summary>
-        /// lblStatusMessage control.
+        /// debuglbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblStatusMessage;
+        protected global::System.Web.UI.WebControls.Label debuglbl;
 
         /// <summary>
         /// HyperLink1 control.
@@ -132,15 +132,6 @@ namespace E_Commerce_Website.dashboard.sections.employees
         protected global::System.Web.UI.WebControls.DropDownList ddlGender;
 
         /// <summary>
-        /// txtEmployeeUsername control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmployeeUsername;
-
-        /// <summary>
         /// txtEmployeeIDNumber control.
         /// </summary>
         /// <remarks>
@@ -184,15 +175,6 @@ namespace E_Commerce_Website.dashboard.sections.employees
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource Roles_Sql_DS;
-
-        /// <summary>
-        /// txtEmployeePassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmployeePassword;
 
         /// <summary>
         /// txtSalary control.

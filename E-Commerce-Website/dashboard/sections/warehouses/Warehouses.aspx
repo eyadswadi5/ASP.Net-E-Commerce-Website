@@ -57,7 +57,7 @@
                                 CssClass="action-icon"
                                 CommandName="DeleteWarehouse"
                                 CommandArgument='<%# Eval("id") %>'
-                                OnClientClick="return confirm('Are you sure you want to delete this store?');">
+                                OnClientClick="return confirm('Are you sure you want to delete this warehouse?');">
                                 <i class="bi bi-trash"></i>
                             </asp:LinkButton>
                         </ItemTemplate>

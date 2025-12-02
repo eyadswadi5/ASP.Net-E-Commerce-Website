@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -55,6 +57,33 @@ namespace E_Commerce_Website.dashboard.sections.branches
         protected void BranchesGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
 
+        }
+
+        protected void BranchesGridView_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "DeleteBranch")
+            {
+                int branchId = Convert.ToInt32(e.CommandArgument);
+
+                string connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+                string query = "DELETE FROM stores WHERE id = @id";
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Prepare();
+                    cmd.Parameters.AddWithValue("@id", branchId);
+
+                    conn.Open();
+                    int affected_rows = cmd.ExecuteNonQuery();
+                    if (affected_rows > 0)
+                        Master.ShowAlert("Branch Deleted Successfully!", "success");
+                    else
+                        Master.ShowAlert("Unenable to delete branch", "danger");
+                }
+
+                BranchesGridView.DataBind();
+            }
         }
     }
 }

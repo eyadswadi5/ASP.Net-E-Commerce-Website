@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dashboard/Dashboard.Master" AutoEventWireup="true" CodeBehind="Employees.aspx.cs" Inherits="E_Commerce_Website.dashboard.sections.employees.Employees" %>
+<%@ MasterType VirtualPath="~/dashboard/Dashboard.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -26,6 +27,7 @@
             <asp:GridView ID="EmployeesGridView" runat="server" DataSourceID="Employees_SQL_DS" AutoGenerateColumns="False" AllowPaging="True"
                 EmptyDataText="No Employees found."
                 OnRowDataBound="EmployeesGridView_RowDataBound"
+                OnRowCommand="EmployeesGridView_RowCommand"
                 CssClass="data-table"
                 GridLines="None"
                 HeaderStyle-CssClass="table-header"
@@ -37,6 +39,36 @@
                     <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" ItemStyle-CssClass="table-cell"></asp:BoundField>
                     <asp:BoundField DataField="Department" HeaderText="Department" SortExpression="Department" ItemStyle-CssClass="table-cell"></asp:BoundField>
                     <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" ItemStyle-CssClass="table-cell"></asp:BoundField>
+
+                    <asp:TemplateField HeaderText="Actions" ItemStyle-CssClass="d-flex gap-3">
+                        <ItemTemplate>
+                            <asp:LinkButton
+                                ID="ViewLinkButton" 
+                                runat="server" 
+                                CssClass="action-icon">
+                                <i class="bi bi-eye"></i>
+                            </asp:LinkButton>
+
+                            <asp:HyperLink 
+                                ID="EditHypLnk" 
+                                runat="server" 
+                                CssClass="action-icon"
+                                NavigateUrl='<%# "~/dashboard/sections/employees/EditEmployee.aspx?id=" + Eval("id") %>' >
+                                <i class="bi bi-pencil"></i>
+                            </asp:HyperLink>
+
+                            <asp:LinkButton
+                                ID="DeleteLinkButton"
+                                runat="server"
+                                CssClass="action-icon"
+                                CommandName="DeleteEmployee"
+                                CommandArgument='<%# Eval("id") %>'
+                                OnClientClick="return confirm('Are you sure you want to delete this emplyee?');">
+                                <i class="bi bi-trash"></i>
+                            </asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
                 </Columns>
             </asp:GridView>
 
