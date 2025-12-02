@@ -177,13 +177,26 @@
                             </li>
                         </ul>
                     </div>
-                    <!-- Additional sections follow same pattern -->
                 </nav>
 
-                <asp:Label ID="lblAuthError" CssClass="text-danger" Text="" runat="server" />
+
+                <asp:Panel id="WanrningAlertPanel" class="d-none" role="alert" runat="server">
+                    <strong>Warning!</strong> <asp:Label ID="lblWarningAlert" Text="" runat="server"/>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </asp:Panel>
+
+                <asp:Panel id="SuccessAlertPanel" class="d-none" role="alert" runat="server">
+                    <strong>Success!</strong> <asp:Label ID="lblSuccessAlert" Text="" runat="server"/>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </asp:Panel>
+
+                <asp:Panel id="DangerAlertPanel" class="d-none" role="alert" runat="server">
+                    <strong>Something Went Wrong!</strong> <asp:Label ID="lblDangerAlert" Text="" runat="server"/>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </asp:Panel>
 
                 <div class="sidebar-footer border-top pt-3">
-                    <asp:LinkButton ID="lnkLogout" runat="server" CssClass="nav-link d-flex align-items-center gap-2">
+                    <asp:LinkButton ID="lnkLogout" OnClick="Logout_Click" runat="server" CssClass="nav-link d-flex align-items-center gap-2">
                         <img src="/assets/icons/logout.svg" alt="logout" />
                         <span>Logout</span>
                     </asp:LinkButton>

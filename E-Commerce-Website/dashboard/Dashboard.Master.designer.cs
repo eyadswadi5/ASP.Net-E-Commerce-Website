@@ -141,13 +141,58 @@ namespace E_Commerce_Website.dashboard
         protected global::System.Web.UI.WebControls.HyperLink HyperLink8;
 
         /// <summary>
-        /// lblAuthError control.
+        /// WanrningAlertPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAuthError;
+        protected global::System.Web.UI.WebControls.Panel WanrningAlertPanel;
+
+        /// <summary>
+        /// lblWarningAlert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblWarningAlert;
+
+        /// <summary>
+        /// SuccessAlertPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel SuccessAlertPanel;
+
+        /// <summary>
+        /// lblSuccessAlert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuccessAlert;
+
+        /// <summary>
+        /// DangerAlertPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel DangerAlertPanel;
+
+        /// <summary>
+        /// lblDangerAlert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDangerAlert;
 
         /// <summary>
         /// lnkLogout control.

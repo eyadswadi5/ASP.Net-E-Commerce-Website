@@ -3,7 +3,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
-        <!-- Page Header -->
         <div class="page-header page-header-compact">
             <div>
                 <h1>Add New Branch</h1>
@@ -16,7 +15,6 @@
             </div>
         </div>
 
-        <!-- Main Form Card -->
         <div class="card form-card">
             
             <h2 class="form-section-header">Branch Details</h2>

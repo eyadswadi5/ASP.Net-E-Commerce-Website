@@ -41,11 +41,11 @@
 
 
             <asp:SqlDataSource runat="server" ID="Branches_SQL_DS" ConnectionString='<%$ ConnectionStrings:DBConnectionString %>' SelectCommand="SELECT TOP (1000)
-      stores.[name]
-      ,stores.[address] + ', ' + stores.[city] as Location
-      ,stores.[phone]
-      ,personal_information.first_name + ' ' + personal_information.last_name as ManagerName
-  FROM [STORE_DB].[dbo].[stores] JOIN personal_information ON personal_information.user_id = stores.manager_id;"></asp:SqlDataSource>
+              stores.[name]
+              ,stores.[address] + ', ' + stores.[city] as Location
+              ,stores.[phone]
+              ,personal_information.first_name + ' ' + personal_information.last_name as ManagerName
+          FROM [STORE_DB].[dbo].[stores] JOIN personal_information ON personal_information.user_id = stores.manager_id;"></asp:SqlDataSource>
         </div>
     </div>
 

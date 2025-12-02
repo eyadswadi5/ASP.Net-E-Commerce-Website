@@ -20,33 +20,29 @@ namespace E_Commerce_Website.dashboard.sections.employees
         {
             string searchTerm = txtSearch.Text.Trim();
 
-            if (string.IsNullOrEmpty(searchTerm))
-            {
-                Employees_SQL_DS.SelectCommand = "SELECT TOP (1000) peri.[id] " +
+            string selectQuery = "SELECT TOP (1000) peri.[id] " +
                     ",peri.[first_name] + ' ' + peri.[last_name] as Employee " +
                     ",peri.[email] as Email " +
                     ",d.[name] as Department " +
                     ",emps.[status] as [Status] " +
                     "FROM [STORE_DB].[dbo].[personal_information] as peri " +
                     "JOIN departments as d ON d.id = peri.department_id " +
-                    "JOIN employee_status as emps ON emps.id = peri.employee_status_id;";
-                Employees_SQL_DS.SelectParameters.Clear();
-                
-            } else
-            {
-                Employees_SQL_DS.SelectCommand = "SELECT TOP (1000) peri.[id] " +
-                    ",peri.[first_name] + ' ' + peri.[last_name] as Employee " +
-                    ",peri.[email] as Email " +
-                    ",d.[name] as Department " +
-                    ",emps.[status] as [Status] " +
-                    "FROM [STORE_DB].[dbo].[personal_information] as peri " +
-                    "JOIN departments as d ON d.id = peri.department_id " +
-                    "JOIN employee_status as emps ON emps.id = peri.employee_status_id " +
-                    "WHERE peri.first_name LIKE '%' + @SearchTerm + '%' " +
+                    "JOIN employee_status as emps ON emps.id = peri.employee_status_id";
+
+            string searchCondition = "WHERE peri.first_name LIKE '%' + @SearchTerm + '%' " +
                     "OR peri.last_name LIKE '%' + @SearchTerm + '%' " +
                     "OR d.name LIKE '%' + @SearchTerm + '%' " +
                     "OR peri.email LIKE '%' + @SearchTerm + '%' " +
                     "OR emps.status LIKE '%' + @SearchTerm + '%'";
+
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                Employees_SQL_DS.SelectCommand = selectQuery;
+                Employees_SQL_DS.SelectParameters.Clear();
+                
+            } else
+            {
+                Employees_SQL_DS.SelectCommand = selectQuery + " " + searchCondition;
                 Employees_SQL_DS.SelectParameters.Clear();
                 Employees_SQL_DS.SelectParameters.Add("SearchTerm", searchTerm);
             }

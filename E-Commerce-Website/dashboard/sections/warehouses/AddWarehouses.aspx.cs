@@ -92,12 +92,12 @@ namespace E_Commerce_Website.dashboard.sections.warehouses
 
                 if (created > 0)
                 {
-                    lblStatusMessage.Text = "Warehouse created successfully!";
+                    Master.StoreSessionAlert("Warehouse created successfully!", "success");
+                    Response.Redirect("/dashboard/sections/warehouses/Warehouses.aspx");
                 }
                 else
-                {
-                    lblStatusMessage.Text = "Error Creating warehouse";
-                }
+                    Master.ShowAlert("Unable to create new warehouse", "success");
+
                 return;
             }
         }

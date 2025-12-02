@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -67,7 +68,6 @@ namespace E_Commerce_Website
                     {
                         reader.Read();
 
-                        Session["auth_error"] = "";
                         Session["Role"] = reader["role_type"].ToString();
                         Session["Email"] = reader["email"].ToString();
                         Session["FirstName"] = reader["first_name"].ToString();
@@ -75,6 +75,9 @@ namespace E_Commerce_Website
                         Session["Phone"] = reader["phone"].ToString();
                         Session["Gender"] = reader["gender"].ToString();
                         Session["Photo_url"] = reader["photo_url"].ToString();
+
+                        Session["AlertMessage"] = string.Empty;
+                        Session["AlertType"] = string.Empty;
 
                         FormsAuthentication.RedirectFromLoginPage(username, false);
 
